@@ -13,7 +13,7 @@ class Imagem extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const PreviewPic(),
+      home:  PreviewPic(),
       theme: ThemeData(
         backgroundColor: const Color.fromRGBO(0, 194, 145, 76),
         visualDensity: VisualDensity.adaptivePlatformDensity,

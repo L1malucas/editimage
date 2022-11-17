@@ -11,7 +11,28 @@ class PreviewPic extends StatefulWidget {
 }
 
 class _PreviewPicState extends State<PreviewPic> {
-  late File imageFile;
+  File? imageFile;
+
+  Widget showImage() {
+    if (imageFile == null) {
+      return Image.asset(
+        'assets/irt.png',
+        height: 250,
+        width: 250,
+      );
+    } else {
+      return Image.file(imageFile!);
+    }
+  }
+
+  Future getImage(ImageSource source) async {
+    final image = await ImagePicker().pickImage(source: source);
+    if (image == null) {
+      return;
+    }
+    File? img = File(image.path);
+    print('img $img');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,16 +51,7 @@ class _PreviewPicState extends State<PreviewPic> {
       body: Column(
         children: [
           const SizedBox(height: 30),
-          Container(
-            margin: const EdgeInsets.all(8),
-            height: 380,
-            decoration: BoxDecoration(
-              color: Colors.black38,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Image.network(
-                'https://www.reconcavo.org.br/wp-content/themes/irt/assets/img/instituto-reconcavo-de-tecnologia-logo-medio.png'),
-          ),
+          showImage(),
           const SizedBox(height: 100),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -48,7 +60,7 @@ class _PreviewPicState extends State<PreviewPic> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(0, 117, 88, 46)),
                   onPressed: () {
-                    _getFromCamera();
+                    getImage(ImageSource.camera);
                   },
                   child: const Icon(
                     Icons.add_a_photo,
@@ -58,7 +70,7 @@ class _PreviewPicState extends State<PreviewPic> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: const Color.fromRGBO(0, 117, 88, 46)),
                   onPressed: () {
-                    _getFromGallery();
+                    getImage(ImageSource.gallery);
                   },
                   child: const Icon(
                     Icons.image,
@@ -68,31 +80,7 @@ class _PreviewPicState extends State<PreviewPic> {
           )
         ],
       ),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.white,
     );
-  }
-
-  /// Get from gallery
-  _getFromGallery() async {
-    PickedFile pickedFile = await ImagePicker().getImage(
-      source: ImageSource.gallery,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    setState(() {
-      imageFile = File(pickedFile.path);
-    });
-  }
-
-  /// Get from Camera
-  _getFromCamera() async {
-    PickedFile pickedFile = await ImagePicker().getImage(
-      source: ImageSource.camera,
-      maxWidth: 1800,
-      maxHeight: 1800,
-    );
-    setState(() {
-      imageFile = File(pickedFile.path);
-    });
   }
 }
