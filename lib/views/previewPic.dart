@@ -44,13 +44,15 @@ class _HomePageState extends State<HomePage> {
         children: [
           if (fileImage != null)
             Container(
-              height: 350,
-              width: 300,
+              padding: EdgeInsets.all(8),
+              margin: EdgeInsets.all(8),
+              height: 400,
+              width: 370,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.black12, width: 1),
                   borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  color: Colors.grey,
+                  color: Colors.white,
                   image: DecorationImage(
                     image: FileImage(fileImage!),
                     fit: BoxFit.cover,
@@ -58,8 +60,10 @@ class _HomePageState extends State<HomePage> {
             )
           else
             Container(
-              height: 350,
-              width: 350,
+              padding: EdgeInsets.all(8),
+              margin: EdgeInsets.all(8),
+              height: 400,
+              width: 370,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.black12, width: 1),
@@ -77,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                     height: 20,
                   ),
                   const Text(
-                    "Imagem cortada",
+                    "Imagem após corte.",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w700,
@@ -91,7 +95,8 @@ class _HomePageState extends State<HomePage> {
           ),
           Center(
             child: ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal, padding: EdgeInsets.all(8)),
               onPressed: () {
                 _openBottomSheet();
               },
@@ -117,11 +122,11 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                const Text('Escolha a origem'),
+                const SizedBox(height: 5),
                 SizedBox(
                   width: 300,
                   height: 45,
-                  child: ElevatedButton( 
+                  child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromRGBO(0, 117, 88, 46)),
                     onPressed: () {
