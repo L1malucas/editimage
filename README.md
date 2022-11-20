@@ -1,16 +1,17 @@
-# editimage
+# edit Image
 
-A new Flutter project.
+Project using image_cropper and image_picker plugin's.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Versão Usada
 
-A few resources to get you started if this is your first Flutter project:
+- sdk: >=2.18.2 <3.0.0
+- Flutter: 3.3.5
+- Dart: 2.18.2
+- DevTools: 2.15.0
+- image_cropper: ^1.5.1
+- image_picker: ^0.8.5
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screens
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![primeira pergunta](./img/cor.png "Text to show on mouseover").
